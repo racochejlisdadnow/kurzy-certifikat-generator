@@ -1,0 +1,347 @@
+:root {
+  --ink: #1b142b;
+  --cream: #f9f5e9;
+  --sun: #ffbe3d;
+  --magenta: #f0398c;
+  --sky: #3cc7f3;
+  --leaf: #00c389;
+  --navy: #2a1a7a;
+  --paper-shadow: 0 22px 50px rgba(27, 20, 43, 0.23);
+  --radius: 24px;
+  --cert-width: 297mm;
+  --cert-height: 210mm;
+  --cert-ratio: 297 / 210;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Space Grotesk", "Trebuchet MS", sans-serif;
+  color: var(--ink);
+  background: linear-gradient(135deg, #fffbee 0%, #ffeef6 45%, #e9fdff 100%);
+}
+
+.bg-burst {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 10% 10%, rgba(240, 57, 140, 0.34), transparent 44%),
+    radial-gradient(circle at 88% 18%, rgba(60, 199, 243, 0.32), transparent 42%),
+    radial-gradient(circle at 18% 84%, rgba(0, 195, 137, 0.3), transparent 42%),
+    radial-gradient(circle at 82% 85%, rgba(255, 190, 61, 0.3), transparent 50%);
+}
+
+.page {
+  padding: 30px 5vw 56px;
+  display: grid;
+  gap: 26px;
+}
+
+.panel {
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: var(--radius);
+  box-shadow: var(--paper-shadow);
+  padding: 18px 22px;
+}
+
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.top-bar h1 {
+  margin: 0 0 6px;
+  font-size: 28px;
+}
+
+.top-bar p {
+  margin: 0;
+}
+
+.print-btn {
+  border: none;
+  border-radius: 14px;
+  background: var(--magenta);
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  padding: 12px 18px;
+  cursor: pointer;
+  box-shadow: 0 10px 18px rgba(240, 57, 140, 0.3);
+}
+
+.editor {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.editor label {
+  display: grid;
+  gap: 6px;
+  font-weight: 600;
+}
+
+.editor input {
+  border: 2px solid rgba(27, 20, 43, 0.15);
+  border-radius: 12px;
+  padding: 10px 12px;
+  font: inherit;
+}
+
+.course-picker p {
+  margin: 0 0 8px;
+  font-weight: 600;
+}
+
+.course-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.course-buttons button {
+  border: 2px solid rgba(27, 20, 43, 0.15);
+  border-radius: 999px;
+  background: #fff;
+  padding: 7px 14px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.course-buttons button.is-active {
+  border-color: var(--navy);
+  background: var(--navy);
+  color: #fff;
+}
+
+.certificate-wrap {
+  display: grid;
+  justify-items: center;
+}
+
+.certificate {
+  position: relative;
+  width: min(100%, var(--cert-width));
+  aspect-ratio: var(--cert-ratio);
+  padding: 28mm 28mm 24mm;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.55)),
+    linear-gradient(135deg, #fff2c8 0%, #ffd8e8 45%, #d8f5ff 100%);
+  background-size:
+    auto,
+    auto;
+}
+
+.grain {
+  display: none;
+}
+
+.cert-header,
+.cert-body,
+.cert-footer {
+  position: relative;
+  z-index: 1;
+}
+
+.small-kicker {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.cert-header h2 {
+  margin: 8px 0 0;
+  font-family: "Bungee Shade", "Trebuchet MS", sans-serif;
+  font-size: clamp(54px, 8vw, 118px);
+  color: var(--navy);
+  line-height: 0.95;
+  text-shadow:
+    3px 3px 0 #fff,
+    6px 6px 0 rgba(240, 57, 140, 0.55),
+    9px 9px 0 rgba(60, 199, 243, 0.55);
+}
+
+.cert-body {
+  align-self: center;
+  text-align: center;
+  display: grid;
+  gap: 0.45em;
+}
+
+.line {
+  margin: 0;
+  line-height: 1.28;
+}
+
+.intro {
+  font-size: clamp(17px, 2.1vw, 25px);
+}
+
+.attendee {
+  font-size: clamp(38px, 4.6vw, 66px);
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.06;
+  margin-bottom: 0.1em;
+}
+
+.course-title {
+  font-size: clamp(22px, 3vw, 40px);
+  font-weight: 700;
+  line-height: 1.14;
+  margin-bottom: 0.06em;
+}
+
+.date {
+  font-size: clamp(16px, 1.9vw, 24px);
+  margin-bottom: 0.25em;
+}
+
+.funny {
+  margin: 0 auto;
+  max-width: 70ch;
+  font-size: clamp(16px, 1.8vw, 22px);
+  font-style: italic;
+  line-height: 1.35;
+  white-space: pre-line;
+}
+
+.signatures {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  margin-top: 6mm;
+}
+
+.signature {
+  width: min(42%, 260px);
+  text-align: center;
+  position: relative;
+  overflow: visible;
+  --sig-x: 0px;
+  --sig-rot: 0deg;
+}
+
+.signature-image {
+  position: absolute;
+  left: 50%;
+  bottom: 24px;
+  object-fit: contain;
+  z-index: 2;
+  transform: translateX(calc(-50% + var(--sig-x))) rotate(var(--sig-rot));
+}
+
+.signature-image-medium {
+  max-width: 299px;
+  max-height: 117px;
+}
+
+.signature-line {
+  width: 100%;
+  border-top: 2px solid rgba(27, 20, 43, 0.35);
+  margin: 0 auto 8px;
+  position: relative;
+  z-index: 1;
+}
+
+.signature-name {
+  margin: 0;
+  font-family: "Bungee Shade", "Trebuchet MS", sans-serif;
+  font-weight: 700;
+  font-size: 26px;
+  color: var(--navy);
+}
+
+.signature--alois .signature-image {
+  --sig-x: -6px;
+  --sig-rot: -2deg;
+}
+
+.signature--doby .signature-image {
+  --sig-x: 7px;
+  --sig-rot: 1.8deg;
+}
+
+.label {
+  margin: 2px 0 0;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 980px) {
+  .certificate {
+    padding: 14mm 14mm 12mm;
+  }
+
+  .cert-body {
+    gap: 0.36em;
+  }
+
+  .signatures {
+    margin-top: 3mm;
+  }
+}
+
+@media print {
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body {
+    background: transparent;
+  }
+
+  .bg-burst,
+  .top-bar,
+  .editor {
+    display: none;
+  }
+
+  .page {
+    padding: 0;
+    display: block;
+  }
+
+  .certificate-wrap {
+    display: block;
+  }
+
+  .certificate {
+    width: 297mm;
+    height: 210mm;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    margin: 0;
+    page-break-inside: avoid;
+    background:
+      linear-gradient(145deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.55)),
+      linear-gradient(135deg, #fff2c8 0%, #ffd8e8 45%, #d8f5ff 100%) !important;
+    background-size:
+      auto,
+      auto;
+  }
+}

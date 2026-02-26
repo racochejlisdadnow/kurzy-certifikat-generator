@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Generator certifikatu | Kurzy Pro Borce</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="certificate-styles.css" />
+    <style id="print-style"></style>
+  </head>
+  <body>
+    <div class="bg-burst" aria-hidden="true"></div>
+
+    <main class="page">
+      <header class="panel top-bar">
+        <div>
+          <h1>Generator certifikatu</h1>
+          <p>A4 landscape, dve varianty textu podle kurzu.</p>
+        </div>
+        <button type="button" class="print-btn">Stahnout PDF / Tisk</button>
+      </header>
+
+      <section class="panel editor">
+        <label>
+          Jmeno absolventa
+          <input type="text" id="nameInput" value="Jméno a příjmení" />
+        </label>
+
+        <label>
+          Datum
+          <input type="text" id="dateInput" value="25. 2. 2026" />
+        </label>
+
+        <div class="course-picker">
+          <p>Varianta kurzu</p>
+          <div class="course-buttons">
+            <button type="button" data-course="course-1" class="is-active">Kurz 1</button>
+            <button type="button" data-course="course-2">Kurz 2</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="certificate-wrap">
+        <article class="certificate" aria-label="Náhled certifikátu">
+          <div class="grain" aria-hidden="true"></div>
+
+          <header class="cert-header">
+            <p class="small-kicker">Kurzy Pro Borce</p>
+            <h2>Certifikát</h2>
+          </header>
+
+          <section class="cert-body">
+            <p class="line intro" data-field="intro">Tímto se potvrzuje, že</p>
+            <p class="line attendee" data-field="name">Jméno a příjmení</p>
+
+            <p class="line intro" data-field="success-line">úspěšně absolvoval kurz</p>
+            <p class="line course-title" data-field="course-name">MISTR LAMENTOVÁNÍ</p>
+            <p class="line date">Datum dokončení: <span data-field="date">25. 2. 2026</span></p>
+
+            <p class="line funny" data-field="funny-line">
+              Oficiálně potvrzeno. Tento člověk nevypráví příběhy. On je zakládá. Borec.
+            </p>
+          </section>
+
+          <footer class="cert-footer">
+            <div class="signatures">
+              <div class="signature signature--alois">
+                <img
+                  class="signature-image signature-image-medium"
+                  src="alois.png"
+                  alt="Podpis Alois"
+                  onerror="this.style.display='none';"
+                />
+                <div class="signature-line" aria-hidden="true"></div>
+                <p class="signature-name">Alois</p>
+              </div>
+              <div class="signature signature--doby">
+                <img
+                  class="signature-image signature-image-medium"
+                  src="doby.png"
+                  alt="Podpis Doby"
+                  onerror="this.style.display='none';"
+                />
+                <div class="signature-line" aria-hidden="true"></div>
+                <p class="signature-name">Doby</p>
+              </div>
+            </div>
+          </footer>
+        </article>
+      </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+    <script src="certificate-script.js"></script>
+  </body>
+</html>
